@@ -16,6 +16,7 @@ time, mark, audio, video {
   border: 0;
   font-size: inherit;
   font: inherit;
+  font-family: Rubik;
 }
 i, cite, em, var, dfn, address {
   /* prevent faux italic */

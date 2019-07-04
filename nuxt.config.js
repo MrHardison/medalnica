@@ -16,7 +16,7 @@ export default {
       {
         rel: 'stylesheet',
         href:
-          'https://fonts.googleapis.com/css?family=Montserrat:100,200,300,400,500,600,700,800,900&subset=latin-ext'
+          'https://fonts.googleapis.com/css?family=Rubik:400,500,700&display=swap&subset=cyrillic'
       }
     ]
   },
