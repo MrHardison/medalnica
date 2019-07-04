@@ -1,0 +1,63 @@
+
+export default {
+  mode: 'spa',
+  /*
+  ** Headers of the page
+  */
+  head: {
+    title: process.env.npm_package_name || '',
+    meta: [
+      { charset: 'utf-8' },
+      { name: 'viewport', content: 'width=device-width, initial-scale=1' },
+      { hid: 'description', name: 'description', content: process.env.npm_package_description || '' }
+    ],
+    link: [
+      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
+      {
+        rel: 'stylesheet',
+        href:
+          'https://fonts.googleapis.com/css?family=Montserrat:100,200,300,400,500,600,700,800,900&subset=latin-ext'
+      }
+    ]
+  },
+  /*
+  ** Customize the progress-bar color
+  */
+  loading: { color: 'green' },
+    /*
+  ** Global CSS
+  */
+  css: [
+    '@/assets/styles/base.css'
+  ],
+  /*
+  ** Plugins to load before mounting the App
+  */
+  plugins: [
+  ],
+  /*
+  ** Nuxt.js modules
+  */
+  modules: [
+    '@nuxtjs/style-resources'
+  ],
+  /*
+  ** Custom styles
+  */
+  styleResources: {
+    sass: [
+      '@/assets/styles/colors.sass',
+      '@/assets/styles/buttons.sass'
+    ] // alternative: sass
+  },
+  /*
+  ** Build configuration
+  */
+  build: {
+    /*
+    ** You can extend webpack config here
+    */
+    extend(config, ctx) {
+    }
+  }
+}
