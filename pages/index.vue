@@ -1,13 +1,14 @@
 <template>
   <div class="container">
-    aaaaa
+    <btn>aaaaaaaaa</btn>
   </div>
 </template>
 
 <script>
+import btn from '~/components/btn'
 
 export default {
-  components: {},
+  components: { btn },
   data() {
     return {}
   }

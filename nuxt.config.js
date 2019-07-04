@@ -47,7 +47,6 @@ export default {
   styleResources: {
     sass: [
       '@/assets/styles/colors.sass',
-      '@/assets/styles/buttons.sass'
     ] // alternative: sass
   },
   /*

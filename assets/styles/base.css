@@ -7,8 +7,8 @@ b, u, i, center,
 dl, dt, dd, ol, ul, li,
 fieldset, form, label, legend,
 table, caption, tbody, tfoot, thead, tr, th, td,
-article, aside, canvas, details, embed, 
-figure, figcaption, footer, header, hgroup, 
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
 menu, nav, output, ruby, section, summary,
 time, mark, audio, video {
   margin: 0;
@@ -16,7 +16,15 @@ time, mark, audio, video {
   border: 0;
   font-size: inherit;
   font: inherit;
-  font-family: Rubik;
+  word-spacing: 1px;
+  -ms-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+}
+html {
+  font-size: 16px;
+  font-family: 'Rubik', sans-serif;
 }
 i, cite, em, var, dfn, address {
   /* prevent faux italic */
@@ -44,6 +52,9 @@ table {
   /* default to compact tables */
   border-collapse: collapse;
   border-spacing: 0;
+}
+* {
+  font-family: inherit;
 }
 *, ::before, ::after {
   box-sizing: border-box; /* intuitive sizing */
