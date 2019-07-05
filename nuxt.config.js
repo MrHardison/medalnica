@@ -28,7 +28,8 @@ export default {
   ** Global CSS
   */
   css: [
-    '@/assets/styles/base.css'
+    '@/assets/styles/base.css',
+    '@/assets/styles/ui.sass'
   ],
   /*
   ** Plugins to load before mounting the App
@@ -46,7 +47,7 @@ export default {
   */
   styleResources: {
     sass: [
-      '@/assets/styles/colors.sass',
+      '@/assets/styles/colors.sass'
     ] // alternative: sass
   },
   /*

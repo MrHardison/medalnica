@@ -1,0 +1,32 @@
+.input-wrapper
+  position: relative
+  width: 340px
+
+  .input
+    background: #fff
+    border: 1px solid $gray-input
+    border-radius: 6px
+    color: $black
+    font-size: 1rem
+    height: 50px
+    line-height: 20px
+    outline: none
+    padding: 10px 14px 0 14px
+    width: 100%
+
+  .placeholder
+    color: $gray
+    font-size: 1rem
+    line-height: 20px
+    left: 14px
+    position: absolute
+    pointer-events: none
+    top: 50%
+    transition: all .2s ease-in-out
+    text-transform: capitalize
+    transform: translateY(-50%)
+
+.input:focus ~ .placeholder,
+.input:not(:focus):valid ~ .placeholder
+  font-size: 0.75rem
+  transform: translate3d(0, -100%, 0)

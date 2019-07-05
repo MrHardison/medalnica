@@ -24,6 +24,7 @@ time, mark, audio, video {
 }
 html {
   font-size: 16px;
+  line-height: 20px;
   font-family: 'Rubik', sans-serif;
 }
 i, cite, em, var, dfn, address {
