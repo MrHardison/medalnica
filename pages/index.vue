@@ -8,7 +8,7 @@
             src="logo.svg"
             alt="logo">
         </div>
-        <div class="preview__content">
+        <div class="content content_line">
           <div class="preview__wrapper">
             <div class="preview__info">
               <h1 class="h1 h1_white">
@@ -51,42 +51,54 @@
           </div>
           <div class="preview__mouse"><img src="mouse.svg" alt="mouse"></div>
         </div>
-        <!-- <a href="/" class="link">qweqeqeweq weqee</a>
-        <h1>qweqwe</h1>
-        <h2 class="h2">qwqrqgeg</h2>
-        <h3 class="h3">wgfdtrjruyr ggeree</h3>
-        <h4 class="h4">dlkvndanv ei</h4>
-        <h5 class="h5">rwq rqwrw q</h5>
-        <h6 class="h6">ewgwbwe egwgewtw twtw</h6>
-        <p class="subtitle">Принимай участие в разных забегах. Собирай результаты и медали в одном месте</p>
-        <p class="small">Нажимая на кнопку, вы даете согласие на обработку персональных данных и соглашаетесь c политикой конфиденциальности</p> -->
-        <!-- <vInput /> -->
       </div>
     </section>
     <section class="about">
       <div class="container">
-        <div class="about__wrapper">
-          <div class="item">
-            <h2 class="h2 h2_white">В нашей базе сотни российских и международных забегов</h2>
+        <div class="about__wrapper content">
+          <div class="item item_title">
+            <h2 class="h2 h2_white">В нашей базе сотни российских <br>и международных забегов</h2>
           </div>
-          <div class="item">
-            <div class="about__image"></div>
+          <div class="item item_image">
+            <div class="about__image"><img src="human.svg" alt="human"></div>
           </div>
-          <div class="item">
+          <div class="item item_description">
             <div class="description">
-              <span class="title">Просто создать</span>
+              <h5 class="title">Просто создать</h5>
               <p class="text">Все результаты добавляются автоматически</p>
             </div>
             <div class="description">
-              <span class="title">Удобно управлять</span>
+              <h5 class="title">Удобно управлять</h5>
               <p class="text">Сортируйте по группам и выделяйте лучшие результаты</p>
             </div>
             <div class="description">
-              <span class="title">Легко поделиться</span>
+              <h5 class="title">Легко поделиться</h5>
               <p class="text">Получаете персональную страничку с вашими результатами</p>
             </div>
           </div>
         </div>
+      </div>
+    </section>
+    <section class="subscribe">
+      <div class="container container_center">
+        <form class="form">
+          <h2 class="form__title">Будь одним из первых!</h2>
+          <div class="form__subtitle">Для запуска бета-тестирования осталось собрать 295 заявок </div>
+          <div class="form__progress"></div>
+          <div class="input-block">
+            <vInput />
+            <vInput />
+            <vInput />
+            <vInput />
+          </div>
+          <btn>Запросить демо-доступ</btn>
+          <hr class="hr">
+          <div class="form__description">Расскажи друзьям — поддержи проект</div>
+          <div class="socials">
+            <a class="socials__item"><img src="social-facebook.svg" alt="facebook"></a>
+            <a class="socials__item"><img src="social-vk.svg" alt="vk"></a>
+          </div>
+        </form>
       </div>
     </section>
   </div>

@@ -1,21 +1,19 @@
 .container
   margin: auto
-  padding: 29px 42px 0 42px
+  padding: 0 42px 0 42px
   position: relative
   width: 1440px
 
-.preview
-  height: 100vh
+  &_center
+    text-align: center
 
-  &::after
-    background: rgba(#fff, .2)
-    bottom: 0
-    content: ''
-    height: 1px
-    left: 50%
-    position: absolute
-    transform: translateX(-50%)
-    width: 62%
+.content
+  position: relative
+  margin-left: 90px
+
+.preview
+  padding-top: 29px
+  height: 100vh
 
   .logo
     height: 34px
@@ -25,8 +23,6 @@
     &__image
       height: auto
       max-width: 100%
-
-  &__content
 
   &__wrapper
     align-items: flex-start
@@ -65,9 +61,14 @@
     position: relative
 
     &::before
+      background: url('~static/medal-big.svg') center no-repeat / contain
+      content: ''
+      height: 754px
+      left: 50%
       position: absolute
+      top: -200px
       transform: translateX(-50%)
-      width: 630px
+      width: 658px
       z-index: 1
 
     .image
@@ -81,4 +82,138 @@
     margin-top: 5.63rem
 
 .about
+  padding-bottom: 5.8rem
+  position: relative
   margin-top: 6rem
+
+  &__wrapper
+    align-items: flex-start
+    display: flex
+    justify-content: flex-start
+    position: relative
+
+    &::before, &:after
+      background: rgba(#fff, .2)
+      top: -130px
+      content: ''
+      height: 1px
+      left: 0
+      position: absolute
+      width: calc(100% - 90px)
+
+    &::after
+      top: auto
+      bottom: -11rem
+
+    .item
+      &_title
+        width: 330px
+
+      &_image
+        text-align: center
+        width: 525px
+
+        img
+          height: auto
+          max-width: 100%
+
+      &_description
+        width: 277px
+
+        .description
+          margin-bottom: 2.88rem
+
+          .title
+            margin-bottom: 0.56rem
+            color: #fff
+
+          .text
+            color: #fff
+            font-size: 1rem
+            font-weight: normal
+            line-height: 20px
+
+.subscribe
+  padding-bottom: 10rem
+
+  .form
+    align-items: center
+    background: #fff
+    border-radius: 10px
+    display: inline-flex
+    flex-direction: column
+    padding: 10.14rem 0 1.94rem 0
+    justify-content: flex-start
+    width: 802px
+
+    &__title
+      color: $black-form
+      font-size: 42px
+      line-height: 40px
+      font-weight: 500
+      margin-bottom: 1.69rem
+
+    &__subtitle
+      color: $black-form
+      font-size: 1rem
+      font-weight: normal
+      line-height: 23px
+      margin-bottom: 1.81rem
+      width: 364px
+
+    &__progress
+      background: #387fd7
+      border-radius: 10px
+      height: 3px
+      margin-bottom: 3.25rem
+      width: 276px
+
+    .input-block
+      display: flex
+      flex-wrap: wrap
+      margin-bottom: 3.94rem
+      justify-content: space-between
+      width: 600px
+
+      .input-wrapper
+        margin-bottom: 1.25rem
+        width: 280px
+
+        &:last-child, &:nth-last-child(2)
+          margin-bottom: 0
+
+    .hr
+      border: 0
+      background: #d8d8d8
+      height: 1px
+      margin: 3.63rem 0 1.56rem 0
+      width: 100%
+
+    &__description
+      color: rgba($black-title, .5)
+      font-size: 0.75rem
+      line-height: 15px
+      margin-bottom: 1rem
+
+    .socials
+      align-items: center
+      display: inline-flex
+      justify-content: center
+
+      &__item
+        align-items: center
+        background: #ffbe00
+        border-radius: 50%
+        cursor: pointer
+        display: inline-flex
+        height: 44px
+        margin-right: 15px
+        transition: opacity .2s ease-in-out
+        justify-content: center
+        width: 44px
+
+        &:hover
+          opacity: .5
+
+        &:last-child
+          margin-right: 0
