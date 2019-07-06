@@ -1,26 +1,42 @@
 .container
+  margin: auto
   padding: 29px 42px 0 42px
+  position: relative
+  width: 1440px
 
 .preview
-  background: radial-gradient(circle at 67% 46%, #5e7efc, #3346a8)
   height: 100vh
+
+  &::after
+    background: rgba(#fff, .2)
+    bottom: 0
+    content: ''
+    height: 1px
+    left: 50%
+    position: absolute
+    transform: translateX(-50%)
+    width: 62%
 
   .logo
     height: 34px
-    margin-bottom: 134px
+    margin-bottom: 5.3rem
     width: 152px
 
     &__image
       height: auto
       max-width: 100%
 
+  &__content
+
   &__wrapper
+    align-items: flex-start
     display: flex
     justify-content: space-between
+    width: 100%
 
   &__info
+    margin-top: 3.13rem
     text-align: left
-    margin-left: 90px
     width: 420px
 
     .h1
@@ -43,5 +59,26 @@
         line-height: 16px
         margin-top: 0.63rem
 
+  &__image
+    height: 533px
+    width: 678px
+    position: relative
+
+    &::before
+      position: absolute
+      transform: translateX(-50%)
+      width: 630px
+      z-index: 1
+
+    .image
+      height: auto
+      max-width: 100%
+      position: relative
+      z-index: 2
+
   &__mouse
-    margin: 5.63rem 0 0 90px
+    display: block
+    margin-top: 5.63rem
+
+.about
+  margin-top: 6rem

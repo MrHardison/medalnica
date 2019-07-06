@@ -28,6 +28,9 @@ html {
   font-weight: normal;
   line-height: 20px;
 }
+body {
+  background: radial-gradient(circle at 67% 46%, #5e7efc, #3346a8);
+}
 i, cite, em, var, dfn, address {
   /* prevent faux italic */
   font-style: normal;
