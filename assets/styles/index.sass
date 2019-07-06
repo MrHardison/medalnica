@@ -1,15 +1,33 @@
+.index
+  overflow: hidden
+  position: relative
+
 .container
   margin: auto
   padding: 0 42px 0 42px
   position: relative
-  width: 1440px
+  max-width: 1440px
 
-  &_center
-    text-align: center
+  .line
+    background: rgba(#fff, .2)
+    height: 1px
+    position: absolute
+    left: 0
+    width: 100%
+
+    &_top
+      top: 0
+
+    &_subscribe
+      top: 93px
 
 .content
+  display: flex
+  flex-wrap: wrap
+  margin: 0 auto
+  max-width: 1183px
   position: relative
-  margin-left: 90px
+  justify-content: flex-start
 
 .preview
   padding-top: 29px
@@ -57,6 +75,7 @@
 
   &__image
     height: 533px
+    margin-right: -90px
     width: 678px
     position: relative
 
@@ -82,28 +101,13 @@
     margin-top: 5.63rem
 
 .about
-  padding-bottom: 5.8rem
   position: relative
-  margin-top: 6rem
 
   &__wrapper
     align-items: flex-start
     display: flex
     justify-content: flex-start
     position: relative
-
-    &::before, &:after
-      background: rgba(#fff, .2)
-      top: -130px
-      content: ''
-      height: 1px
-      left: 0
-      position: absolute
-      width: calc(100% - 90px)
-
-    &::after
-      top: auto
-      bottom: -11rem
 
     .item
       &_title
@@ -133,8 +137,14 @@
             font-weight: normal
             line-height: 20px
 
+  .content
+    padding-top: 6rem
+
 .subscribe
+  margin-top: 5.81rem
+  position: relative
   padding-bottom: 10rem
+  z-index: 2
 
   .form
     align-items: center
@@ -142,9 +152,22 @@
     border-radius: 10px
     display: inline-flex
     flex-direction: column
+    margin: 0 auto
+    text-align: center
     padding: 10.14rem 0 1.94rem 0
+    position: relative
     justify-content: flex-start
     width: 802px
+
+    &::before
+      background: url('~static/medal-sm.png') center top no-repeat / contain
+      content: ''
+      height: 165px
+      left: 50%
+      position: absolute
+      top: -9px
+      transform: translateX(-50%)
+      width: 140px
 
     &__title
       color: $black-form
@@ -217,3 +240,17 @@
 
         &:last-child
           margin-right: 0
+
+.subscribers
+  background: radial-gradient(circle at 67% 46%, #5e7efc, #3346a8)
+  background-clip: text
+  bottom: -40px
+  font-weight: 500
+  font-size: 22rem
+  position: absolute
+  left: 50%
+  line-height: 15rem
+  transform: translateX(-50%)
+  -moz-text-fill-color: transparent
+  -webkit-text-fill-color: transparent
+  z-index: 0
