@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="25" height="33" viewBox="0 0 25 33">
+    <g fill="none" fill-rule="evenodd">
+        <rect width="25" height="25" y="5" fill="#FFBE00" rx="12.5"/>
+        <text fill="#050707" font-family="LucidaGrande-Bold, Lucida Grande" font-size="19" font-weight="bold">
+            <tspan x="7" y="18">β</tspan>
+        </text>
+    </g>
+</svg>
