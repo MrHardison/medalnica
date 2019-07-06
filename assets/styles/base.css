@@ -23,9 +23,10 @@ time, mark, audio, video {
   -webkit-font-smoothing: antialiased;
 }
 html {
-  font-size: 16px;
-  line-height: 20px;
   font-family: 'Rubik', sans-serif;
+  font-size: 16px;
+  font-weight: normal;
+  line-height: 20px;
 }
 i, cite, em, var, dfn, address {
   /* prevent faux italic */
