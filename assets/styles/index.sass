@@ -34,6 +34,7 @@
   height: 100vh
 
   .logo
+    display: block
     height: 34px
     margin-bottom: 5.3rem
     width: 152px
@@ -59,6 +60,12 @@
     .subtitle
       margin-bottom: 2.8rem
 
+    .title-after-icon
+      height: 25px
+      margin-left: -5px
+      margin-bottom: 8px
+      width: 25px
+
   &__items
     align-items: flex-start
     display: flex
@@ -74,26 +81,20 @@
         margin-top: 0.63rem
 
   &__image
-    height: 533px
-    margin-right: -90px
-    width: 678px
-    position: relative
+    height: 515px;
+    margin-right: -95px;
+    position: relative;
+    width: 687px;
 
     &::before
-      background: url('~static/medal-big.svg') center no-repeat / contain
+      background: url('~static/preview-big.png') center no-repeat / contain
       content: ''
       height: 754px
       left: 50%
       position: absolute
-      top: -200px
+      top: -148px
       transform: translateX(-50%)
-      width: 658px
-      z-index: 1
-
-    .image
-      height: auto
-      max-width: 100%
-      position: relative
+      width: 728px
       z-index: 2
 
   &__mouse

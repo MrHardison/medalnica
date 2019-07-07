@@ -2,12 +2,14 @@
   <div class="index">
     <section class="preview">
       <div class="container">
-        <div class="logo">
+        <a
+          class="logo"
+          href="/">
           <img
             class="logo__image"
-            src="logo.svg"
+            src="logo.png"
             alt="logo">
-        </div>
+        </a>
         <div class="content">
           <div class="preview__wrapper">
             <div class="preview__info">
@@ -20,7 +22,7 @@
                   alt="title-icon"> беговых достижений
                 <img
                   class="title-after-icon"
-                  src="title-after-icon.svg"
+                  src="title-after-icon.png"
                   alt="title-after-icon">
               </h1>
               <p class="subtitle subtitle_white">
@@ -42,12 +44,7 @@
               </div>
               <btn class="preview__demo" v-scroll-to="'#subscribe'">Запросить демо-доступ</btn>
             </div>
-            <div class="preview__image">
-              <img
-                class="image"
-                src="preview-big.png"
-                alt="Preview">
-            </div>
+            <div class="preview__image"/>
           </div>
           <div class="preview__mouse"><img src="mouse.svg" alt="mouse"></div>
         </div>
@@ -88,13 +85,22 @@
           <div class="line line_subscribe" />
           <form class="form" id="subscribe">
             <h2 class="form__title">Будь одним из первых!</h2>
-            <div class="form__subtitle">Для запуска бета-тестирования осталось собрать 295 заявок </div>
+            <div class="form__subtitle">Для запуска бета-тестирования осталось собрать {{ subscribers }} заявок </div>
             <div class="form__progress"></div>
             <div class="input-block">
-              <vInput />
-              <vInput />
-              <vInput />
-              <vInput />
+              <vInput
+                :name="'name'"
+                :placeholder="'Имя'"/>
+              <vInput
+                :name="'email'"
+                :placeholder="'Email'"/>
+              <vInput
+                :name="'surname'"
+                :placeholder="'Фамилия'"/>
+              <vInput
+                :description="'Необходим для поиска результатов'"
+                :name="'year'"
+                :placeholder="'Год рождения'"/>
             </div>
             <btn>Запросить демо-доступ</btn>
             <hr class="hr">

@@ -3,16 +3,22 @@
   width: 340px
 
   .input
+    box-sizing: border-box
     background: #fff
     border: 1px solid $gray-input
     border-radius: 6px
     color: $black
     font-size: 1rem
     height: 50px
-    line-height: 20px
     outline: none
-    padding: 10px 14px 0 14px
+    padding: 15px 14px 0 14px
     width: 100%
+
+    &:focus
+      border-color: #85898e
+
+    &.error
+      border-color: $red
 
   .placeholder
     color: $gray
@@ -25,6 +31,15 @@
     transition: all .2s ease-in-out
     text-transform: capitalize
     transform: translateY(-50%)
+
+  .description
+    bottom: -20px
+    color: rgba($black, .5)
+    font-size: 0.75rem
+    font-weight: normal
+    line-height: 15px
+    left: 0
+    position: absolute
 
 .input:focus ~ .placeholder,
 .input:not(:focus):valid ~ .placeholder

@@ -3,11 +3,12 @@
     <input
       class="input"
       :type="type"
-      :id="'email'"
+      :id="name"
       required>
     <label
-      :for="'email'"
+      :for="name"
       class="placeholder">{{ placeholder }}</label>
+    <p class="description">{{ description }}</p>
   </div>
 </template>
 
@@ -26,6 +27,10 @@ export default {
     placeholder: {
       type: String,
       default: 'Type any text'
+    },
+    description: {
+      type: String,
+      default: ''
     }
   }
 }
