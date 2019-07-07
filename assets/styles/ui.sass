@@ -16,7 +16,10 @@ h1, h1.h1
   &_white
     color: #fff
 
-  &_mobile
+  @media (max-width: 1439px)
+    font-size: 2.4rem
+
+  @media (max-width: 767px)
     font-size: 2.25rem
 
 h2, h2.h2
@@ -27,6 +30,9 @@ h2, h2.h2
 
   &_white
     color: #fff
+
+  @media (max-width: 1439px)
+    font-size: 1.6rem
 
 h3, h3.h3
   color: $black-title
@@ -46,6 +52,15 @@ h5, h5.h5
   font-weight: 700
   line-height: 20px
 
+  @media (max-width: 1439px)
+    font-size: 0.88rem
+
+  @media (max-width: 1023px)
+    font-size: 1.25rem
+
+  @media (max-width: 767px)
+    font-size: 1rem
+
 h6, h6.h6
   color: $black
   font-size: 0.75rem
@@ -62,6 +77,12 @@ h6, h6.h6
 
   &_white
     color: #fff
+
+  @media (max-width: 1439px)
+    font-size: 1rem
+
+  @media (max-width: 767px)
+    font-size: 1.13rem
 
 .small
   color: $black-title

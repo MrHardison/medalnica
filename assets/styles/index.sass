@@ -8,6 +8,9 @@
   position: relative
   max-width: 1440px
 
+  @media (max-width: 1023px)
+    padding: 0 15px
+
   .line
     background: rgba(#fff, .2)
     height: 1px
@@ -21,6 +24,9 @@
     &_subscribe
       top: 93px
 
+    @media (max-width: 1023px)
+      display: none
+
 .content
   display: flex
   flex-wrap: wrap
@@ -33,6 +39,9 @@
   padding-top: 29px
   height: 100vh
 
+  @media (max-width: 1023px)
+    height: auto
+
   .logo
     display: block
     height: 34px
@@ -43,22 +52,43 @@
       height: auto
       max-width: 100%
 
+    @media (max-width: 767px)
+      margin-bottom: 2.2rem
+
   &__wrapper
     align-items: flex-start
     display: flex
     justify-content: space-between
     width: 100%
 
+    @media (max-width: 1023px)
+      flex-wrap: wrap
+
   &__info
     margin-top: 3.13rem
     text-align: left
     width: 420px
+
+    @media (max-width: 1439px)
+      margin-top: 0
+      width: 350px
+
+    @media (max-width: 1023px)
+      margin-top: 7rem
+      order: 2
+      width: 100%
+
+    @media (max-width: 767px)
+      margin-top: 1.7rem
 
     .h1
       margin-bottom: 1.44rem
 
     .subtitle
       margin-bottom: 2.8rem
+
+      @media (max-width: 767px)
+        width: 300px
 
     .title-after-icon
       height: 25px
@@ -80,6 +110,34 @@
         line-height: 16px
         margin-top: 0.63rem
 
+    @media (max-width: 1439px)
+      .item
+        &__description
+          font-size: 0.75rem
+
+    @media (max-width: 1023px)
+      width: 60%
+
+    @media (max-width: 767px)
+      margin-bottom: 2.88em
+      flex-wrap: wrap
+      width: 100%
+
+      .item
+        align-items: center
+        display: flex
+        margin-bottom: 1rem
+        justify-content: flex-start
+        width: 100%
+
+        &__description
+          margin-left: 5px
+          display: flex
+          margin: 0
+
+          p
+            margin: 0 5px 0 12px
+
   &__image
     height: 515px;
     margin-right: -95px;
@@ -97,22 +155,71 @@
       width: 728px
       z-index: 2
 
+    @media (max-width: 1439px)
+      margin-right: 0
+      height: 367px
+      width: 486px
+
+      &::before
+        top: auto
+        bottom: -64px
+        background-size: cover
+        height: 535px
+        width: 492px
+
+    @media (max-width: 1023px)
+      margin: 0 auto
+      margin-top: 50px
+      order: 1
+
+    @media (max-width: 767px)
+      background: url('~static/preview-sm.png') center no-repeat / contain
+      height: 273px
+      margin-top: 0
+      width: 256px
+
+      &::before
+        display: none
+
   &__mouse
     display: block
     margin-top: 5.63rem
 
+    @media (max-width: 1023px)
+      display: none
+
 .about
   position: relative
+
+  @media (max-width: 767px)
+    margin-top: 5.5rem
 
   &__wrapper
     align-items: flex-start
     display: flex
     justify-content: flex-start
     position: relative
+    width: 100%
+
+    @media (max-width: 1439px)
+      justify-content: space-between
+
+    @media (max-width: 1023px)
+      flex-wrap: wrap
 
     .item
       &_title
         width: 330px
+
+        @media (max-width: 1439px)
+          width: 250px
+
+        @media (max-width: 1023px)
+          margin-bottom: 5rem
+          width: 100%
+
+        @media (max-width: 767px)
+          margin-bottom: 1.94rem
 
       &_image
         text-align: center
@@ -122,8 +229,28 @@
           height: auto
           max-width: 100%
 
+        @media (max-width: 1439px)
+          width: 300px
+
+        @media (max-width: 1023px)
+          margin: 0 auto
+          margin-bottom: 5rem
+
+        @media (max-width: 767px)
+          margin-bottom: 2.63rem
+
       &_description
         width: 277px
+
+        @media (max-width: 1439px)
+          width: 230px
+
+        @media (max-width: 1023px)
+          width: 100%
+
+        @media (max-width: 767px)
+          font-weight: normal
+          font-size: 1rem
 
         .description
           margin-bottom: 2.88rem
@@ -138,14 +265,34 @@
             font-weight: normal
             line-height: 20px
 
+            @media (max-width: 1439px)
+              font-size: 0.75rem
+
+            @media (max-width: 1023px)
+              font-size: 1rem
+
+  .h2
+    @media (max-width: 767px)
+      width: 330px
+
   .content
     padding-top: 6rem
+
+    @media (max-width: 767px)
+      padding: 0
 
 .subscribe
   margin-top: 5.81rem
   position: relative
   padding-bottom: 10rem
   z-index: 2
+
+  @media (max-width: 1023px)
+    margin-top: 3rem
+    padding-bottom: 15rem
+
+  @media (max-width: 767px)
+    padding-bottom: 10rem
 
   .form
     align-items: center
@@ -160,6 +307,9 @@
     justify-content: flex-start
     width: 802px
 
+    @media (max-width: 767px)
+      width: 100%
+
     &::before
       background: url('~static/medal-sm.png') center top no-repeat / contain
       content: ''
@@ -172,10 +322,15 @@
 
     &__title
       color: $black-form
-      font-size: 42px
+      font-size: 2.63rem
       line-height: 40px
       font-weight: 500
       margin-bottom: 1.69rem
+
+      @media (max-width: 767px)
+        font-size: 2.25rem
+        margin-bottom: 1.5rem
+        width: 70%
 
     &__subtitle
       color: $black-form
@@ -185,12 +340,19 @@
       margin-bottom: 1.81rem
       width: 364px
 
+      @media (max-width: 767px)
+        margin-bottom: 2.38rem
+        width: 90%
+
     &__progress
       background: #387fd7
       border-radius: 10px
       height: 3px
       margin-bottom: 3.25rem
       width: 276px
+
+      @media (max-width: 767px)
+        width: 265px
 
     .input-block
       display: flex
@@ -199,12 +361,23 @@
       justify-content: space-between
       width: 600px
 
+      @media (max-width: 767px)
+        margin-bottom: 3.56rem
+        width: 100%
+
       .input-wrapper
         margin-bottom: 1.25rem
         width: 280px
 
         &:last-child, &:nth-last-child(2)
           margin-bottom: 0
+
+        @media (max-width: 767px)
+          margin: 0 auto
+          margin-bottom: 1.25rem
+
+          &:last-child, &:nth-last-child(2)
+            margin-bottom: 1.25rem
 
     .hr
       border: 0
@@ -245,7 +418,7 @@
 .subscribers
   background: radial-gradient(circle at 67% 46%, #5e7efc, #3346a8)
   background-clip: text
-  bottom: -40px
+  bottom: -20px
   font-weight: 500
   font-size: 22rem
   position: absolute
@@ -255,3 +428,19 @@
   -moz-text-fill-color: transparent
   -webkit-text-fill-color: transparent
   z-index: 0
+
+  @media (max-width: 1023px)
+    font-size: 18rem
+    bottom: 100px
+
+  @media (max-width: 767px)
+    bottom: 50px
+    font-size: 10rem
+
+.copy
+  color: $blue-l
+  font-size: 0.75rem
+  line-height: 20px
+  margin: 0 0 30px 25px
+  position: relative
+  z-index: 1

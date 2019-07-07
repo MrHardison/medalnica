@@ -31,20 +31,20 @@
               <div class="preview__items">
                 <div class="item">
                   <img src="star.svg" alt="star">
-                  <div class="item__description"><p>Получай</p> беговые бейджи</div>
+                  <div class="item__description"><p>Получай </p> беговые бейджи</div>
                 </div>
                 <div class="item">
                   <img src="clock.svg" alt="clock">
-                  <div class="item__description"><p>Устанавливай</p> личные рекорды </div>
+                  <div class="item__description"><p>Устанавливай </p> личные рекорды </div>
                 </div>
                 <div class="item">
                   <img src="cup.svg" alt="cup">
-                  <div class="item__description"><p>Собирай</p> медали и кубки</div>
+                  <div class="item__description"><p>Собирай </p> медали и кубки</div>
                 </div>
               </div>
               <btn class="preview__demo" v-scroll-to="'#subscribe'">Запросить демо-доступ</btn>
             </div>
-            <div class="preview__image"/>
+            <div class="preview__image" />
           </div>
           <div class="preview__mouse"><img src="mouse.svg" alt="mouse"></div>
         </div>
@@ -114,6 +114,7 @@
       </div>
     </section>
     <div class="subscribers">{{ subscribers }}</div>
+    <div class="copy">© 2019 «Медальница»</div>
   </div>
 </template>
 
