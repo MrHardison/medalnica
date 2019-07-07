@@ -88,7 +88,7 @@
             id="subscribe"
             @submit.prevent="sendData">
             <h2 class="form__title">Будь одним из первых!</h2>
-            <div class="form__subtitle">Для запуска бета-тестирования осталось собрать {{ subscribers }} заявок </div>
+            <div class="form__subtitle">Для запуска бета-тестирования осталось собрать {{ subscribersLeft }} заявок </div>
             <progressBar :progress-count="progressCount"/>
             <div class="input-block">
               <vInput
@@ -122,7 +122,7 @@
         </div>
       </div>
     </section>
-    <div class="subscribers">{{ subscribers }}</div>
+    <div class="subscribers">{{ subscribersLeft }}</div>
     <div class="copy">© 2019 «Медальница»</div>
   </div>
 </template>
@@ -137,13 +137,17 @@ export default {
   components: { btn, vInput, progressBar },
   data() {
     return {
-      subscribers: '0000',
+      subscribersLeft: 555,
+      targetSubscribers: 777,
       name: '',
       email: '',
       surname: '',
       year: '',
       progressCount: 40
     }
+  },
+  mounted() {
+    this.progressCount = +((this.targetSubscribers - this.subscribersLeft) * 100 / this.targetSubscribers).toFixed(0)
   },
   methods: {
     sendData() {
