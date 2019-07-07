@@ -83,26 +83,35 @@
       <div class="container">
         <div class="content">
           <div class="line line_subscribe" />
-          <form class="form" id="subscribe">
+          <form
+            class="form"
+            id="subscribe"
+            @submit.prevent="sendData">
             <h2 class="form__title">Будь одним из первых!</h2>
             <div class="form__subtitle">Для запуска бета-тестирования осталось собрать {{ subscribers }} заявок </div>
-            <div class="form__progress"></div>
+            <progressBar :progress-count="progressCount"/>
             <div class="input-block">
               <vInput
                 :name="'name'"
-                :placeholder="'Имя'"/>
+                :placeholder="'Имя'"
+                @update="name = $event"/>
               <vInput
                 :name="'email'"
-                :placeholder="'Email'"/>
+                :placeholder="'Email'"
+                @update="email = $event"/>
               <vInput
                 :name="'surname'"
-                :placeholder="'Фамилия'"/>
+                :placeholder="'Фамилия'"
+                @update="surname = $event"/>
               <vInput
                 :description="'Необходим для поиска результатов'"
                 :name="'year'"
-                :placeholder="'Год рождения'"/>
+                :placeholder="'Год рождения'"
+                @update="year = $event"/>
             </div>
-            <btn class="btn_light-shadow">Запросить демо-доступ</btn>
+            <btn
+              type="submit"
+              class="btn_light-shadow">Запросить демо-доступ</btn>
             <hr class="hr">
             <div class="form__description">Расскажи друзьям — поддержи проект</div>
             <div class="socials">
@@ -122,12 +131,23 @@
 
 import btn from '~/components/btn'
 import vInput from '~/components/vInput'
+import progressBar from '~/components/progressBar'
 
 export default {
-  components: { btn, vInput },
+  components: { btn, vInput, progressBar },
   data() {
     return {
-      subscribers: '0000'
+      subscribers: '0000',
+      name: '',
+      email: '',
+      surname: '',
+      year: '',
+      progressCount: 40
+    }
+  },
+  methods: {
+    sendData() {
+      console.log(1)
     }
   }
 }

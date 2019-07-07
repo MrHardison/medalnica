@@ -4,6 +4,7 @@
       class="input"
       :type="type"
       :id="name"
+      v-model="value"
       required>
     <label
       :for="name"
@@ -32,7 +33,20 @@ export default {
       type: String,
       default: ''
     }
+  },
+  data() {
+    return {
+      value: ''
+    }
+  },
+  watch: {
+    value: {
+      handler(data) {
+        this.$emit('update', this.value)
+      }
+    }
   }
+  
 }
 </script>
 

@@ -1,0 +1,21 @@
+.progress
+  background: #D7D9DB
+  border-radius: 10px
+  height: 4px
+  margin-bottom: 3.25rem
+  position: relative
+  width: 276px
+
+  .line
+    background: #387fd7
+    border-radius: 10px
+    height: 3px
+    left: 0
+    position: absolute
+    top: 50%
+    transform: translateY(-50%)
+    transition: width .3s ease-in-out
+    width: 10%
+
+  @media (max-width: 767px)
+    width: 265px
