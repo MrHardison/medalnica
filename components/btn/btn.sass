@@ -7,15 +7,32 @@
   font-weight: 500
   height: 50px
   min-width: 226px
+  position: relative
   outline: none
   padding: 0 26px
-  transition: box-shadow .3s ease-in-out
   text-transform: capitalize
 
   &_yellow
     background: linear-gradient(to bottom, #ffdf00, #ff9800)
-    // box-shadow: 0 15px 30px 5px #c6d1e7
 
     &:hover
       background: linear-gradient(to bottom, #fff39d, #ffb900)
-      // box-shadow: 0 10px 30px 5px #c6d1e7
+
+  &_dark-shadow
+    box-shadow: 0 25px 22px -15px rgba(31, 45, 112, 0.7), 0 25px 30px -15px rgba(31, 45, 112, 0.7)
+
+    &:hover
+      box-shadow: 0 25px 18px -15px rgba(31, 45, 112, 0.7)
+
+    &:active
+      box-shadow: 0 15px 18px -10px rgba(31, 45, 112, 0.7)
+
+  &_light-shadow
+    box-shadow: 0 25px 22px -15px rgba(198,209,225, 0.7), 0 25px 30px -15px rgba(198,209,225, 0.7)
+
+    &:hover
+      box-shadow: 0 25px 18px -15px rgba(198,209,225, 0.7)
+
+    &:active
+      box-shadow: 0 15px 18px -10px rgba(198,209,225, 0.7)
+

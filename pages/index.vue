@@ -42,7 +42,7 @@
                   <div class="item__description"><p>Собирай </p> медали и кубки</div>
                 </div>
               </div>
-              <btn class="preview__demo" v-scroll-to="'#subscribe'">Запросить демо-доступ</btn>
+              <btn class="preview__demo btn_dark-shadow" v-scroll-to="'#subscribe'">Запросить демо-доступ</btn>
             </div>
             <div class="preview__image" />
           </div>
@@ -102,7 +102,7 @@
                 :name="'year'"
                 :placeholder="'Год рождения'"/>
             </div>
-            <btn>Запросить демо-доступ</btn>
+            <btn class="btn_light-shadow">Запросить демо-доступ</btn>
             <hr class="hr">
             <div class="form__description">Расскажи друзьям — поддержи проект</div>
             <div class="socials">
