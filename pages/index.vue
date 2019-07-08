@@ -1,5 +1,20 @@
 <template>
   <div class="index">
+    <transition name="fade">
+      <div class="preview-container" v-if="preview" @click="hidePreview">
+        <div
+          class="preview-image">
+          <img
+            class="img img_desktop"
+            src="preview-desktop.png"
+            alt="preview">
+          <img
+            class="img img_mobile"
+            src="preview-mobile.png"
+            alt="preview">
+        </div>
+      </div>
+    </transition>
     <section class="preview">
       <div class="container">
         <a
@@ -44,7 +59,7 @@
               </div>
               <btn class="preview__demo btn_dark-shadow" v-scroll-to="'#subscribe'">Запросить демо-доступ</btn>
             </div>
-            <div class="preview__image" />
+            <div class="preview__image" @click="preview = true"/>
           </div>
           <div class="preview__mouse"><img src="mouse.svg" alt="mouse"></div>
         </div>
@@ -115,8 +130,15 @@
             <hr class="hr">
             <div class="form__description">Расскажи друзьям — поддержи проект</div>
             <div class="socials">
-              <a class="socials__item" href="/"><img src="social-facebook.svg" alt="facebook"></a>
-              <a class="socials__item" href="/"><img src="social-vk.svg" alt="vk"></a>
+              <div class="socials__item" href="/">
+                <img src="social-facebook.svg" alt="facebook">
+              </div>
+              <a
+                class="socials__item"
+                href="https://vk.com/share.php?url=http://qwe.qwe"
+                target="_blank">
+                <img src="social-vk.svg" alt="vk">
+              </a>
             </div>
           </form>
         </div>
@@ -133,6 +155,7 @@ import btn from '~/components/btn'
 import vInput from '~/components/vInput'
 import progressBar from '~/components/progressBar'
 
+
 export default {
   components: { btn, vInput, progressBar },
   data() {
@@ -143,7 +166,8 @@ export default {
       email: '',
       surname: '',
       year: '',
-      progressCount: 40
+      progressCount: 40,
+      preview: false
     }
   },
   mounted() {
@@ -152,8 +176,14 @@ export default {
   methods: {
     sendData() {
       console.log(1)
+    },
+    shareVK() {
+      VK.Share.button({ url: 'http://qwe.qwe', title: 'Заголовок страницы' }, { type: 'custom' })
+    },
+    hidePreview() {
+      this.preview = false
     }
-  }
+  },
 }
 </script>
 
