@@ -1,15 +1,19 @@
 <template>
   <div class="input-wrapper">
     <input
-      class="input"
+      :class="{error: error}"
       :type="type"
       :id="name"
+      class="input"
       v-model="value"
+      @blur="validation"
       required>
     <label
       :for="name"
       class="placeholder">{{ placeholder }}</label>
-    <p class="description">{{ description }}</p>
+    <p
+      :class="{error: error}"
+      class="description">{{ error ? errorText : description }}</p>
   </div>
 </template>
 
@@ -32,11 +36,20 @@ export default {
     description: {
       type: String,
       default: ''
+    },
+    errorText: {
+      type: String,
+      default: 'Поле заполнено неверно!'
     }
   },
   data() {
     return {
-      value: ''
+      value: '',
+       pattern: {
+        email: /^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i,
+        year: /^\s*(3[01]|[12][0-9]|0?[1-9])\.(1[012]|0?[1-9])\.((?:19|20)\d{2})\s*$/,
+      },
+      error: false
     }
   },
   watch: {
@@ -44,9 +57,31 @@ export default {
       handler(data) {
         this.$emit('update', this.value)
       }
+    },
+    error: {
+      handler(data) {
+        this.$emit('error', data)
+      }
     }
+  },
+  methods: {
+    validation() {
+      if (!this.value.length) {
+        this.error = false
+      }
+      if (this.value.length && this.pattern[this.name]) {
+        const result = this.pattern[this.name].test(this.value)
+        if (!result) {
+          if (this.error === false) {
+            this.error = true
+          }
+        } else {
+          this.error = false
+        }
+      }
+    },
+
   }
-  
 }
 </script>
 

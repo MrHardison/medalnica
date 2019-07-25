@@ -1,21 +1,12 @@
 <template>
   <div class="index">
-    <transition name="fade">
-      <div class="preview-container" v-if="preview" @click="hidePreview">
-        <div
-          class="preview-image">
-          <img
-            class="img img_desktop"
-            src="preview-desktop.png"
-            alt="preview">
-          <img
-            class="img img_mobile"
-            src="preview-mobile.png"
-            alt="preview">
-        </div>
-      </div>
-    </transition>
     <section class="preview">
+      <transition name="fade">
+        <div
+          v-if="preview"
+          class="preview__hide"
+          @click="preview = false" />
+      </transition>
       <div class="container">
         <a
           class="logo"
@@ -27,7 +18,9 @@
         </a>
         <div class="content">
           <div class="preview__wrapper">
-            <div class="preview__info">
+            <div
+              :class="{hidden: preview}"
+              class="preview__info">
               <h1 class="h1 h1_white">
                 <p>Витрина</p>
                 твоих
@@ -58,10 +51,27 @@
                 </div>
               </div>
               <btn class="preview__demo btn_dark-shadow" v-scroll-to="'#subscribe'">Запросить демо-доступ</btn>
+              <div class="preview__mouse"><img src="mouse.svg" alt="mouse"></div>
             </div>
-            <div class="preview__image" @click="preview = true"/>
+            <div
+              :class="{hidden: preview}"
+              class="preview__image">
+              <img
+                :class="{open: preview}"
+                class="image-animated"
+                src="preview-desktop.png"
+                alt="preview-big"
+                @click="togglePreview">
+              <div :class="{open: preview}" class="preview-sm-wrapper">
+                <img
+                  :class="{open: preview}"
+                  class="image-animated-sm"
+                    src="preview-sm.png"
+                    alt="preview-sm"
+                    @click="togglePreview">
+              </div>
+            </div>
           </div>
-          <div class="preview__mouse"><img src="mouse.svg" alt="mouse"></div>
         </div>
       </div>
     </section>
@@ -99,47 +109,62 @@
         <div class="content">
           <div class="line line_subscribe" />
           <form
+            :class="{subscribed: subscribed}"
             class="form"
             id="subscribe"
             @submit.prevent="sendData">
-            <h2 class="form__title">Будь одним из первых!</h2>
-            <div class="form__subtitle">Для запуска бета-тестирования осталось собрать {{ subscribersLeft }} заявок </div>
-            <progressBar :progress-count="progressCount"/>
-            <div class="input-block">
-              <vInput
-                :name="'name'"
-                :placeholder="'Имя'"
-                @update="name = $event"/>
-              <vInput
-                :name="'email'"
-                :placeholder="'Email'"
-                @update="email = $event"/>
-              <vInput
-                :name="'surname'"
-                :placeholder="'Фамилия'"
-                @update="surname = $event"/>
-              <vInput
-                :description="'Необходим для поиска результатов'"
-                :name="'year'"
-                :placeholder="'Год рождения'"
-                @update="year = $event"/>
-            </div>
-            <btn
-              type="submit"
-              class="btn_light-shadow">Запросить демо-доступ</btn>
-            <hr class="hr">
-            <div class="form__description">Расскажи друзьям — поддержи проект</div>
-            <div class="socials">
-              <div class="socials__item" href="/">
-                <img src="social-facebook.svg" alt="facebook">
+            <template v-if="!subscribed">
+              <h2 class="form__title">Будь одним из первых!</h2>
+              <div class="form__subtitle">Для запуска бета-тестирования осталось собрать {{ subscribersLeft }} заявок </div>
+              <progressBar
+                :current="currentSubscribers"
+                :target="targetSubscribers"/>
+              <div class="input-block">
+                <vInput
+                  :name="'name'"
+                  :placeholder="'Имя'"
+                  @update="name = $event" />
+                <vInput
+                  :name="'email'"
+                  :placeholder="'Email'"
+                  :errorText="'E-mail введен неверно!'"
+                  @update="email = $event"
+                  @error="error = $event" />
+                <vInput
+                  :name="'surname'"
+                  :placeholder="'Фамилия'"
+                  @update="surname = $event" />
+                <vInput
+                  :description="'Необходим для поиска результатов'"
+                  :name="'year'"
+                  :placeholder="'Год рождения (дд.мм.гггг)'"
+                  :errorText="'Год рождения введен неверно!'"
+                  @update="year = $event"
+                  @error="error = $event" />
               </div>
-              <a
-                class="socials__item"
-                href="https://vk.com/share.php?url=http://qwe.qwe"
-                target="_blank">
-                <img src="social-vk.svg" alt="vk">
-              </a>
-            </div>
+              <btn
+                type="submit"
+                class="btn_light-shadow"
+                :class="{disabled: error}">Запросить демо-доступ</btn>
+              <hr class="hr">
+              <div class="form__description">Расскажи друзьям — поддержи проект</div>
+              <div class="socials">
+                <div
+                  class="socials__item"
+                    @click="shareFB">
+                  <img src="social-facebook.svg" alt="fb">
+                </div>
+                <div
+                  class="socials__item"
+                  @click="shareVK">
+                  <img src="social-vk.svg" alt="vk">
+                </div>
+              </div>
+            </template>
+            <template v-else-if="subscribed">
+              <h2 class="form__title">Спасибо!</h2>
+              <div class="form__subtitle">Мы сообщим вам о начале <br>бета-тестирования</div>
+            </template>
           </form>
         </div>
       </div>
@@ -154,36 +179,121 @@
 import btn from '~/components/btn'
 import vInput from '~/components/vInput'
 import progressBar from '~/components/progressBar'
-
+const contentful = require('contentful-management')
+const chalk = require('chalk')
+const SPACE_ID = 'bkd7o9g76153'
+const ACCESS_TOKEN = 'CFPAT-hTwIZYqXRO3sH0fHjspq-BNG7EFaYXpcNPNLRUmaLc4'
+const CONTENT_TYPE_ID = 'betaTesters'
+const client = contentful.createClient({
+  accessToken: ACCESS_TOKEN
+})
 
 export default {
   components: { btn, vInput, progressBar },
+  head () {
+    return {
+      title: this.title,
+      meta: [
+        // hid is used as unique identifier. Do not use `vmid` for it as it will not work
+        { hid: 'description', name: 'description', content: this.content }
+      ]
+    }
+  }
   data() {
     return {
-      subscribersLeft: 555,
-      targetSubscribers: 777,
+      title: 'Медальница – витрина твоих беговых достижений.',
+      content: 'Витрина твоих беговых достижений. Принимай участие в разных забегах. Собирай результаты и медали в одном месте.',
+      error: false,
+      subscribed: false,
+      targetSubscribers: 1000,
+      currentSubscribers: 0,
+      subscribersLeft: 0,
       name: '',
       email: '',
       surname: '',
       year: '',
-      progressCount: 40,
-      preview: false
+      preview: false,
+      loading: false,
+      shareImage: 'http://medalnica.at.appstockus.net/share.png'
     }
   },
   mounted() {
-    this.progressCount = +((this.targetSubscribers - this.subscribersLeft) * 100 / this.targetSubscribers).toFixed(0)
+    this.subscribed = localStorage.getItem('subscribed') ? true : false
+    this.getTotalBetaTester()
   },
   methods: {
+    togglePreview() {
+      this.preview = !this.preview
+    },
     sendData() {
-      console.log(1)
+      if (!this.error && !this.loading) {
+        this.loading = true
+        this.createEntryBetaTester()
+          .then(this.getTotalBetaTester())
+          .then(() => {
+            this.subscribed = true
+            localStorage.setItem('subscribed', this.subscribed)
+            this.loading = false
+          })
+          .catch(error => {
+            console.log(chalk.red('\nError occurred:'))
+            if (error.stack) {
+              console.error(error.stack)
+              return
+            }
+            console.error(error)
+          })
+      }
     },
     shareVK() {
-      VK.Share.button({ url: 'http://qwe.qwe', title: 'Заголовок страницы' }, { type: 'custom' })
+      window.open(`https://vk.com/share.php?url=http://medalnica.at.appstockus.net&title=Витрина твоих беговых достижений. Принимай участие в разных забегах. Собирай результаты и медали в одном месте.&image=${this.shareImage}`, 'newwindow', 'width=300,height=250')
+      return false
+    },
+    shareFB() {
+      window.open('https://www.facebook.com/sharer/sharer.php?u=http://medalnica.at.appstockus.net',
+        'facebook-share-dialog',
+        'width=800,height=600'
+      )
+      return false
     },
     hidePreview() {
       this.preview = false
+    },
+    createEntryBetaTester() {
+      return client.getSpace(SPACE_ID)
+        .then(space => space.createEntry(CONTENT_TYPE_ID, {
+        fields: {
+          name: {
+            'en-US': this.name
+          },
+          surname: {
+            'en-US': this.surname
+          },
+          email: {
+            'en-US': this.email
+          },
+          dateOfBirth: {
+            'en-US': new Date(this.year)
+          }
+        }
+      }))
+      .then((entry) => entry.publish())
+      .then((entry) => console.log(entry))
+      .catch(console.error)
+    },
+    getTotalBetaTester () {
+      return client.getSpace(SPACE_ID)
+        .then(space => space.getEntries())
+        .then(res => {
+          // console.log(res.items)
+          this.currentSubscribers = res.total
+          this.subscribersLeft = this.targetSubscribers - res.total
+        })
+        .catch(err => {
+          return console.error
+        })
     }
-  },
+  }
 }
 </script>
 

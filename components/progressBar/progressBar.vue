@@ -1,16 +1,16 @@
 <template>
-  <div class="progress">
-    <span
-      class="line"
-      :style="{width: progressCount + '%'}" />
-  </div>
+  <progress class="progress" :max="target" :value="current"> {{ current }} </progress>
 </template>
 
 <script>
 export default {
   name: 'ProgressBar',
   props: {
-    progressCount: {
+    current: {
+      type: Number,
+      default: 0
+    },
+    target: {
       type: Number,
       default: 0
     }

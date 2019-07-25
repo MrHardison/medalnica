@@ -29,7 +29,6 @@
     pointer-events: none
     top: 50%
     transition: all .2s ease-in-out
-    text-transform: capitalize
     transform: translateY(-50%)
 
   .description
@@ -40,6 +39,9 @@
     line-height: 15px
     left: 0
     position: absolute
+
+    &.error
+      color: $red
 
 .input:focus ~ .placeholder,
 .input:not(:focus):valid ~ .placeholder

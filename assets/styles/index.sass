@@ -3,9 +3,10 @@
   position: relative
 
 .container
-  margin: auto
-  padding: 0 42px 0 42px
+  margin: 0 auto
+  height: 100%
   position: relative
+  padding: 0 42px 0 42px
   max-width: 1440px
 
   @media (max-width: 1023px)
@@ -29,11 +30,13 @@
 
 .content
   display: flex
-  flex-wrap: wrap
   margin: 0 auto
+  height: 100%
   max-width: 1183px
-  position: relative
   justify-content: flex-start
+
+  @media (min-width: 2000px)
+    max-width: 100%
 
 .preview-container
   position: fixed
@@ -46,7 +49,6 @@
 .preview-image
   cursor: pointer
   display: flex
-  justify-content: center
   border-radius: 10px
   left: 50%
   height: 90vh
@@ -54,6 +56,7 @@
   top: 50%
   transform: translate(-50%, -50%)
   z-index: 9999
+  justify-content: flex-end
   width: 95%
 
   @media (max-width: 767px)
@@ -75,11 +78,17 @@
 
 .preview
   padding-top: 29px
+  position: relative
   height: 100vh
+
+  @media (max-width: 1050px)
+    height: auto
 
   @media (max-width: 1023px)
     padding: 1rem 0 3rem 0
-    height: auto
+
+  @media (max-width: 767px)
+    padding-bottom: 0
 
   .logo
     display: block
@@ -87,12 +96,33 @@
     margin-bottom: 5.3rem
     width: 152px
 
+    @media (max-width: 1023px)
+      margin-bottom: 2rem
+
     &__image
       height: auto
       max-width: 100%
 
     @media (max-width: 767px)
       margin: 0 0 2.2rem -12px
+
+  &__hide
+    cursor: pointer
+    color: $red
+    height: 30px
+    position: absolute
+    right: 2rem
+    top: 2rem
+    width: 30px
+    z-index: 9999
+    -webkit-tap-highlight-color: transparent
+
+    &::before
+      background: url('~static/cross.svg') center no-repeat
+      content: ''
+      display: block
+      height: 100%
+      width: 100%
 
   &__wrapper
     align-items: flex-start
@@ -105,8 +135,17 @@
 
   &__info
     margin-top: 3.13rem
+    position: relative
+    transition: opacity .35s ease-in-out
     text-align: left
     width: 420px
+
+    &.hidden
+      opacity: 0
+      z-index: -999
+
+    @media(min-width: 2000px)
+      margin-top: 16%
 
     @media (max-width: 1439px)
       margin-top: 0
@@ -127,6 +166,7 @@
       margin-bottom: 2.8rem
 
       @media (max-width: 767px)
+        margin-bottom: 1.5rem
         width: 300px
 
     .title-after-icon
@@ -169,6 +209,9 @@
         justify-content: flex-start
         width: 100%
 
+        &:last-child
+          margin-bottom: 0
+
         &__description
           margin-left: 5px
           display: flex
@@ -178,50 +221,115 @@
             margin: 0 5px 0 12px
 
   &__image
+    background: url('~static/preview-big.png') center top no-repeat
+    background-size: contain
     cursor: pointer
-    height: 515px;
+    height: 690px
+    margin-top: -148px
     margin-right: -95px;
-    position: relative;
-    width: 687px;
+    transition: all .5s ease-in-out
+    width: 670px
+    -webkit-tap-highlight-color: transparent
 
-    &::before
-      background: url('~static/preview-big.png') center no-repeat
-      background-size: contain
-      content: ''
-      height: 754px
-      left: 50%
-      position: absolute
-      top: -148px
-      transform: translateX(-50%)
-      width: 728px
-      z-index: 2
+    &.hidden
+      background-image: none
+
+    @media (min-width: 2000px)
+      margin-right: -200px;
+      height: 1040px
+      width: 1010px;
 
     @media (max-width: 1439px)
-      margin-right: 0
-      height: 367px
-      width: 486px
-
-      &::before
-        top: auto
-        bottom: -64px
-        background-size: cover
-        height: 535px
-        width: 492px
+      margin-right: 50px
+      height: 500px
+      width: 475px
 
     @media (max-width: 1023px)
+      height: 610px
       margin: 0 auto
-      margin-top: 50px
+      margin-top: 0
       order: 1
+      width: 600px
 
     @media (max-width: 767px)
-      background: url('~static/preview-sm.png') center no-repeat
-      background-size: contain
-      height: 273px
+      background: none
+      height: auto
       margin-top: 0
-      width: 256px
+      width: 90%
 
-      &::before
+    .image-animated
+      height: 72%
+      margin-top: 20%
+      outline: none
+      transition: all .35s ease-in-out
+      width: 100%
+
+      &.open
+        margin: 0
+        height: 700px
+        width: 1000px
+        transform: translate(-50%, 10%)
+
+        @media (min-width: 2000px)
+          height: 1000px
+          width: 1400px
+          transform: translate(-43%, 15%)
+
+        @media (max-width: 1439px)
+          height: 600px
+          width: 800px
+          transform: translate(-58%, 20%)
+
+        @media (max-width: 1260px)
+          transform: translate(-48%, 18%)
+
+        @media (max-width: 1050px)
+           transform: translate(-43%, 18%)
+
+        @media (max-width: 1023px)
+          height: 500px
+          width: 700px
+          transform: translate(-7%, 18%)
+
+
+      @media (max-width: 767px)
         display: none
+
+    .preview-sm-wrapper
+      background: url('~static/preview-sm-bg.png') center bottom no-repeat
+      display: none
+      background-size: contain
+      margin: 0 auto
+      overflow: hidden
+      transition: all .35s ease-in-out
+      width: 450px
+
+      &.open
+        background-image: none
+        overflow: visible
+
+      @media (max-width: 767px)
+        border-radius: 0 0 50% 50%
+        height: 450px
+        display: block
+
+      @media (max-width: 575px)
+        height: 300px
+        width: 300px
+
+      .image-animated-sm
+        border-radius: 20px
+        display: none
+        margin: 0 auto
+        transition: all .35s ease-in-out
+        width: 65%
+
+        @media (max-width: 767px)
+          display: block
+
+        &.open
+          @media (max-width: 767px)
+            width: 80%
 
   &__mouse
     display: block
@@ -364,6 +472,13 @@
       transform: translateX(-50%)
       width: 140px
 
+    &.subscribed
+      padding-bottom: 6rem
+
+      &::before
+        background: url('~static/medal-sm-success.png') center top no-repeat
+        background-size: contain
+
     &__title
       color: $black-form
       font-size: 2.63rem
@@ -419,6 +534,12 @@
         @media (max-width: 767px)
           margin: 0 auto
           margin-bottom: 1.25rem
+
+          &:nth-child(2)
+            order: 3
+
+          &:nth-child(4)
+            order: 4
 
           &:last-child, &:nth-last-child(2)
             margin-bottom: 1.25rem
@@ -494,3 +615,6 @@
 
 .fade-enter, .fade-leave-to
   opacity: 0
+
+.preview-desktop-move
+  transition: all .35s ease-in-out
