@@ -137,7 +137,7 @@
                 <vInput
                   :description="'Необходим для поиска результатов'"
                   :name="'year'"
-                  :placeholder="'Год рождения (дд.мм.гггг)'"
+                  :placeholder="'Год рождения (дд.мм.гг)'"
                   :errorText="'Год рождения введен неверно!'"
                   @update="year = $event"
                   @error="error = $event" />
@@ -171,6 +171,12 @@
     </section>
     <div class="subscribers">{{ subscribersLeft }}</div>
     <div class="copy">© 2019 «Медальница»</div>
+    <script type="text/javascript">
+      !function(){const t=document.createElement("script");t.type="text/javascript",t.async=!0,t.src="https://vk.com/js/api/openapi.js?162",t.onload=function(){VK.Retargeting.Init("VK-RTRG-389454-48afS"),VK.Retargeting.Hit()},document.head.appendChild(t)}();
+    </script>
+    <noscript>
+      <img src="https://vk.com/rtrg?p=VK-RTRG-389454-48afS" style="position:fixed; left:-999px;"/>
+    </noscript>
   </div>
 </template>
 
@@ -190,19 +196,8 @@ const client = contentful.createClient({
 
 export default {
   components: { btn, vInput, progressBar },
-  head () {
-    return {
-      title: this.title,
-      meta: [
-        // hid is used as unique identifier. Do not use `vmid` for it as it will not work
-        { hid: 'description', name: 'description', content: this.content }
-      ]
-    }
-  }
   data() {
     return {
-      title: 'Медальница – витрина твоих беговых достижений.',
-      content: 'Витрина твоих беговых достижений. Принимай участие в разных забегах. Собирай результаты и медали в одном месте.',
       error: false,
       subscribed: false,
       targetSubscribers: 1000,
@@ -214,7 +209,7 @@ export default {
       year: '',
       preview: false,
       loading: false,
-      shareImage: 'http://medalnica.at.appstockus.net/share.png'
+      shareImage: 'https://mymedals.ru/share.png'
     }
   },
   mounted() {
@@ -246,11 +241,11 @@ export default {
       }
     },
     shareVK() {
-      window.open(`https://vk.com/share.php?url=http://medalnica.at.appstockus.net&title=Витрина твоих беговых достижений. Принимай участие в разных забегах. Собирай результаты и медали в одном месте.&image=${this.shareImage}`, 'newwindow', 'width=300,height=250')
+      window.open(`https://vk.com/share.php?url=https://mymedals.ru&title=Витрина твоих беговых достижений. Принимай участие в разных забегах. Собирай результаты и медали в одном месте.&image=${this.shareImage}`, 'newwindow', 'width=300,height=250')
       return false
     },
     shareFB() {
-      window.open('https://www.facebook.com/sharer/sharer.php?u=http://medalnica.at.appstockus.net',
+      window.open('https://www.facebook.com/sharer/sharer.php?u=https://mymedals.ru',
         'facebook-share-dialog',
         'width=800,height=600'
       )
@@ -285,7 +280,6 @@ export default {
       return client.getSpace(SPACE_ID)
         .then(space => space.getEntries())
         .then(res => {
-          // console.log(res.items)
           this.currentSubscribers = res.total
           this.subscribersLeft = this.targetSubscribers - res.total
         })
